@@ -1,3 +1,4 @@
 # 排除编译目录和编译器配置目录
 /.vscode/
 /build/
+/.cache

@@ -1,15 +1,25 @@
 
+#ifndef QUEUE_H
+#define QUEUE_H
+
 #include <iostream>
 
-template<typename T>
-struct Node{
-    T data;
-    Node<T>* nextPtr;
-};
+
 
 template <typename DataType>
 class queue{
+private:
+    template<typename T>
+    struct Node{
+        T data;
+        Node<T>* nextPtr;
+    };
+    
+    
+private:
     using Ptr = Node<DataType>*;
+
+
 private:
     Ptr head = nullptr;
     Ptr tail = nullptr;
@@ -88,3 +98,34 @@ public:
         std::cout << std::endl;
     }
 };
+
+void debugQueue(){
+    queue<int> q;
+    
+    q.push_back(1);
+    q.push_back(2);
+    q.push_back(3);
+    q.push_back(4);
+    q.push_back(5);
+    q.push_back(6);
+    q.push_back(7);
+    q.push_back(8);
+    q.push_back(9);
+    q.push_back(10);
+
+    // 将队列中的每一个数加起来
+    
+    int sum = 0;
+    while(!q.empty()){
+        sum += q.front();
+        q.pop_front();
+        std::cout << "size = "<< q.getSize() << std::endl;
+    }
+    q.push_back(12);    
+    std::cout << "sum = " << sum << std::endl;
+    q.push_back(11);
+    
+    return ;
+}
+
+#endif // QUEUE_H

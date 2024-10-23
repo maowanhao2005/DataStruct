@@ -1,3 +1,5 @@
+#ifndef STACK_H
+#define STACK_H
 
 
 #include <iostream>
@@ -33,7 +35,6 @@ public:
             top->data = data;
             top->next = NULL;
             size++;
-            std::cout << "Pushed first: " << data <<",size = "<< size << std::endl;
         }
         else{
             Node<DataType>* temp = new Node<DataType>;
@@ -41,8 +42,8 @@ public:
             temp->next = top;
             top = temp;
             size++;
-            std::cout << "Pushed: " << data << ",size = "<< size << std::endl;
         }
+        std::cout << "Pushed: " << data << ",size = "<< size << std::endl;
     }
 
     DataType pop(){
@@ -99,3 +100,28 @@ public:
     }
 
 };
+
+void debugStack(){
+    using namespace std;
+    stack<char> s;
+
+    s.push('a');
+    s.push('b');
+    s.push('c');
+    s.push('d');
+    s.push('e');
+    
+    cout << "size = " << s.getSize() << endl;   
+
+    s.print();
+
+    while(!s.isEmpty()){
+        cout << s.pop() << endl;
+    }
+
+    cout << "size = " << s.getSize() << endl;
+
+    s.push('f');
+}
+
+#endif // STACK_H

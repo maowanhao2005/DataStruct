@@ -1,3 +1,8 @@
+#ifndef DEQUE_H
+#define DEQUE_H
+#include <iostream>
+
+
 #include <stdexcept>
 
 
@@ -139,3 +144,18 @@ public:
         }
     };
 };
+
+void debugDeque() {
+    Deque<int> deque;
+    deque.push_front(1);
+    deque.push_front(2);
+    deque.push_front(3);
+    deque.push_back(4);
+    deque.push_back(5);
+    deque.push_back(6);
+
+    std::cout << "Deque size: " << deque.get_size() << std::endl;
+}
+
+
+#endif // DEQUE_H

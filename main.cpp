@@ -51,6 +51,8 @@ int main(int argc, char const *argv[]){
     }
 
     cout << "size = " << s.getSize() << endl;
+
+    s.push('f');
     
     return 0;
 }

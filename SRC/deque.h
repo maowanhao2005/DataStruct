@@ -1,9 +1,11 @@
 #ifndef DEQUE_H
 #define DEQUE_H
 #include <iostream>
-
-
 #include <stdexcept>
+
+/// task :
+/// # 1 把双端队列的每一个函数的功能注释说明清楚
+/// # 2 把双端队列的每一个函数的具体实现注释说明清楚
 
 
 template <typename T> 

@@ -4,8 +4,6 @@
 
 #include <iostream>
 
-
-
 template <typename DataType>
 class queue{
 private:

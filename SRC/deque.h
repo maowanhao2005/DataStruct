@@ -120,7 +120,7 @@ public:
         clear();
     }
 
-    class Iterator {
+    class Iterator {    // 迭代器就是指针
         private:
         using constIterator = const Iterator;
     private:

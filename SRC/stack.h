@@ -1,6 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
-
+/// task :
+/// # 1 把栈的每一个函数的功能注释说明清楚
+/// # 2 把栈的每一个函数的具体实现注释说明清楚
 
 #include <iostream>
 

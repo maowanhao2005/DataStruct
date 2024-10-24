@@ -31,6 +31,8 @@ public:
         std::cout << "Stack deleted" << std::endl;
     }
 
+    /// @brief 将数据放入栈中存储
+    /// @param data 将放入栈中的数据
     void push(DataType data){
         if (top==NULL){
             top = new Node<DataType>;

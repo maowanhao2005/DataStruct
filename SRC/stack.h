@@ -47,7 +47,7 @@ public:
             top = temp;                                             //让top指针指向新空间
             size++;                                                 //空间扩展
         }
-        std::cout << "Pushed: " << data << ",size = "<< size << std::endl;//输出一句话加上data的值再输出一句话加上shize的值
+        // std::cout << "Pushed: " << data << ",size = "<< size << std::endl;//输出一句话加上data的值再输出一句话加上shize的值
     }
 
     DataType pop(){
@@ -61,7 +61,7 @@ public:
             top = top->next;                                        //让top指向下一个
             delete temp;                                            //删除最上面的空间
             size--;                                                 //空间删除
-            std::cout << "Popped: " << data << ",size = "<< size << std::endl;//输出一句话
+            // std::cout << "Popped: " << data << ",size = "<< size << std::endl;//输出一句话
             return data;                                            //返回data的值
         }
     }

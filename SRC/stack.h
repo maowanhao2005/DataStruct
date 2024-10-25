@@ -55,30 +55,26 @@ public:
     /// @return 如果top为空他会输出一段话返回值为0，如若不然data的指针top会指向下一个data，之后会将下一个空间等于top指针,然后top的top指针会指向下一个，删除temp，去除temp的空间，最后输出data和size的值，返回data空间
     DataType pop(){
         if (top==NULL){                                             //如果空间为空
-            std::cout << "Stack is empty" << std::endl;             //输出一句话
-            return 0;                                               //返回值
+            std::runtime_error("Stack is empty");
         }
-        else{                                                       //或者
-            DataType data = top->data;                              //让data的top指向新的data
-            Node<DataType>* temp = top;                             //让空间指向top
-            top = top->next;                                        //让top指向下一个
-            delete temp;                                            //删除最上面的空间
-            size--;                                                 //空间删除
-            // std::cout << "Popped: " << data << ",size = "<< size << std::endl;//输出一句话
-            return data;                                            //返回data的值
-        }
+        DataType data = top->data;                              //让data的top指向新的data
+        Node<DataType>* temp = top;                             //让空间指向top
+        top = top->next;                                        //让top指向下一个
+        delete temp;                                            //删除最上面的空间
+        size--;                                                 //空间删除
+        // std::cout << "Popped: " << data << ",size = "<< size << std::endl;//输出一句话
+        return data;                                            //返回data的值
     }
+    
     /// @brief 创建一个peek函数来包含top是否为空的情况如若为空返回值为0，如若不是返回top指向的data空间
     /// @return 
     DataType peek(){
         if (top==NULL){                                             //如果空间为空
-            std::cout << "Stack is empty" << std::endl;             //输出一句话
-            return 0;                                               //返回值
+            std::runtime_error("Stack is empty");
         }
-        else{                                                       //或者
-            return top->data;                                       //返回最上面的top指向的data
-        }
+        return top->data;                                       //返回最上面的top指向的data
     }
+    
     /// @brief 返回空间是否为空
     /// @return 如下所示
     bool isEmpty(){                                                 //创建一个布尔值的函数

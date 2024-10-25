@@ -51,11 +51,11 @@ public:
         // std::cout << "Pushed: " << data << ",size = "<< size << std::endl;//输出一句话加上data的值再输出一句话加上shize的值
     }
 
-    /// @brief 创建一个pop函数值来包含删除空间top指针指向下一个空间的值和top指针为空的情况
-    /// @return 如果top为空他会输出一段话返回值为0，如若不然data的指针top会指向下一个data，之后会将下一个空间等于top指针,然后top的top指针会指向下一个，删除temp，去除temp的空间，最后输出data和size的值，返回data空间
+    /// @brief 拿出栈顶数据，并弹出元素
+    /// @return 栈顶数据
     DataType pop(){
         if (top==NULL){                                             //如果空间为空
-            std::runtime_error("Stack is empty");
+            std::runtime_error("Stack is empty");               // 报错
         }
         DataType data = top->data;                              //让data的top指向新的data
         Node<DataType>* temp = top;                             //让空间指向top
@@ -66,8 +66,8 @@ public:
         return data;                                            //返回data的值
     }
     
-    /// @brief 创建一个peek函数来包含top是否为空的情况如若为空返回值为0，如若不是返回top指向的data空间
-    /// @return 
+    /// @brief 获取栈顶数据，且并不会弹出元素
+    /// @return 栈顶数据
     DataType peek(){
         if (top==NULL){                                             //如果空间为空
             std::runtime_error("Stack is empty");
@@ -81,14 +81,16 @@ public:
         return top==NULL;                                          //判断空间是不是空
     }
 
+    /// @brief 获取栈空间内元素个数
+    /// @return 元素个数
     int getSize(){                                                  // 创建一个int类型的函数
         return size;                                                //返回size的值
     }
     
     
-    ///@brief 将temp的指针指向top指向的空间
-    ///@return 先让空间指针等于top指针,先搞一个will循环当空间指针不等于空的时候，输出空间指针指向的下一个data的值，再让空间指针指向下一个空间，换行
-    void print(){                                                   
+    ///@brief 从栈顶到栈底打印栈内元素
+    ///@return 先让空间指针等于top指针,先搞一个while循环当空间指针不等于空的时候，输出空间指针指向的下一个data的值，再让空间指针指向下一个空间，换行
+    void print(){
         Node<DataType>* temp = top;                                 //
         while(temp!=NULL){
             std::cout << temp->data << " ";                          //输出temp指向的data的值
@@ -99,6 +101,7 @@ public:
 
     
     /// @brief 当top指向的下一个空间不为空的时候让top指向下一个空间删除上一个空间
+    /// @note 清空栈内所有元素
     void clear(){
         while(top!=NULL){                                           //空间不等于空的时候
             Node<DataType>* temp = top;                             //让空间的temp指向top

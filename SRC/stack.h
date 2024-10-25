@@ -84,9 +84,10 @@ public:
     int getSize(){                                                  // 创建一个int类型的函数
         return size;                                                //返回size的值
     }
+    
+    
     ///@brief 将temp的指针指向top指向的空间
     ///@return 先让空间指针等于top指针,先搞一个will循环当空间指针不等于空的时候，输出空间指针指向的下一个data的值，再让空间指针指向下一个空间，换行
-
     void print(){                                                   
         Node<DataType>* temp = top;                                 //
         while(temp!=NULL){
@@ -95,6 +96,8 @@ public:
         }
         std::cout << std::endl;                                     //换行
     }
+
+    
     /// @brief 当top指向的下一个空间不为空的时候让top指向下一个空间删除上一个空间
     void clear(){
         while(top!=NULL){                                           //空间不等于空的时候
@@ -107,6 +110,8 @@ public:
     }
 
 };
+
+
 /// @brief 创建空间和删除空间来输出size的值
 ///@return 使用std不用输出std,让stack改为用s来运用，用点函数来创建空间的值，之后输出size的空间数，之后是删除空间来输出size的值
 void debugStack(){

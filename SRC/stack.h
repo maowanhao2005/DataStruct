@@ -20,7 +20,7 @@ private:
     Node<DataType>* top = NULL;                                     //空间为空
     int size = 0;                                                   //空间为空
 public:
-    stack() = default;                                             
+    stack() = default;
     ~stack(){
         while(top!=NULL){                                           //空间不为空的时候
             Node<DataType>* temp = top;                             //让空间指针temp指向top
@@ -33,6 +33,7 @@ public:
 
     /// @brief 将数据放入栈中存储
     /// @param data 将放入栈中的数据
+    //
     void push(DataType data){
         if (top==NULL){                                             //如果栈为空
             top = new Node<DataType>;                               //空节点等于一个新建的空间
@@ -50,6 +51,8 @@ public:
         std::cout << "Pushed: " << data << ",size = "<< size << std::endl;//输出一句话加上data的值再输出一句话加上shize的值
     }
 
+    /// @brief 创建一个pop函数值来包含删除空间top指针指向下一个空间的值和top指针为空的情况
+    /// @return 如果top为空他会输出一段话返回值为0，如若不然data的指针top会指向下一个data，之后会将下一个空间等于top指针,然后top的top指针会指向下一个，删除temp，去除temp的空间，最后输出data和size的值，返回data空间
     DataType pop(){
         if (top==NULL){                                             //如果空间为空
             std::cout << "Stack is empty" << std::endl;             //输出一句话
@@ -65,7 +68,8 @@ public:
             return data;                                            //返回data的值
         }
     }
-
+    /// @brief 创建一个peek函数来包含top是否为空的情况如若为空返回值为0，如若不是返回top指向的data空间
+    /// @return 
     DataType peek(){
         if (top==NULL){                                             //如果空间为空
             std::cout << "Stack is empty" << std::endl;             //输出一句话
@@ -75,14 +79,17 @@ public:
             return top->data;                                       //返回最上面的top指向的data
         }
     }
-
-    bool isEmpty(){
+    /// @brief 返回空间是否为空
+    /// @return 如下所示
+    bool isEmpty(){                                                 //创建一个布尔值的函数
         return top==NULL;                                          //判断空间是不是空
     }
 
-    int getSize(){
+    int getSize(){                                                  // 创建一个int类型的函数
         return size;                                                //返回size的值
     }
+    ///@brief 将temp的指针指向top指向的空间
+    ///@return 先让空间指针等于top指针,先搞一个will循环当空间指针不等于空的时候，输出空间指针指向的下一个data的值，再让空间指针指向下一个空间，换行
 
     void print(){                                                   
         Node<DataType>* temp = top;                                 //
@@ -92,7 +99,7 @@ public:
         }
         std::cout << std::endl;                                     //换行
     }
-
+    /// @brief 当top指向的下一个空间不为空的时候让top指向下一个空间删除上一个空间
     void clear(){
         while(top!=NULL){                                           //空间不等于空的时候
             Node<DataType>* temp = top;                             //让空间的temp指向top
@@ -104,7 +111,8 @@ public:
     }
 
 };
-
+/// @brief 创建空间和删除空间来输出size的值
+///@return 使用std不用输出std,让stack改为用s来运用，用点函数来创建空间的值，之后输出size的空间数，之后是删除空间来输出size的值
 void debugStack(){
     using namespace std;                                            //使用std输出
     stack<char> s;                                                  //定义stack为s

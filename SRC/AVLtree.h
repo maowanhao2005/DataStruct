@@ -1,6 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*AVL树删除节点的算法描述
+AVL树是一种自平衡二叉搜索树，删除节点后需要重新平衡树以保持其高度平衡的特性。以下是删除节点的详细步骤：
+
+查找并删除节点：
+
+使用标准二叉搜索树的删除方法找到并删除目标节点。
+如果目标节点没有子节点，直接删除。
+如果目标节点有一个子节点，用该子节点替换目标节点。
+如果目标节点有两个子节点，用右子树的最小节点（或左子树的最大节点）替换目标节点，并删除该最小节点。
+更新高度：
+
+从删除节点的位置开始，向上更新每个节点的高度。
+重新平衡：
+
+在更新高度的过程中，检查每个节点的平衡因子（左子树高度减去右子树高度）。
+如果平衡因子不在[-1, 1]范围内，进行相应的旋转操作以恢复平衡：
+LL旋转：左子树的左子树过重，进行单右旋。
+RR旋转：右子树的右子树过重，进行单左旋。
+LR旋转：左子树的右子树过重，先进行左旋再进行右旋。
+RL旋转：右子树的左子树过重，先进行右旋再进行左旋。
+*/
+
 typedef struct AVLNode {
     int val;
     struct AVLNode *left;
@@ -142,24 +164,36 @@ void inorderTraversal(AVLNode* root) {
     }
 }
 
-int main() {
-    AVLNode* root = createNode(33);
-    root->left = createNode(15);
-    root->right = createNode(50);
-    root->left->left = createNode(10);
-    root->left->right = createNode(20);
-    root->right->left = createNode(40);
-    root->right->right = createNode(60);
+// int main() {
+//     AVLNode* root = createNode(33);
+//     root->left = createNode(15);
+//     root->right = createNode(50);
+//     root->left->left = createNode(10);
+//     root->left->right = createNode(20);
+//     root->right->left = createNode(40);
+//     root->right->right = createNode(60);
 
-    printf("原始树的中序遍历: ");
-    inorderTraversal(root);
-    printf("\n");
+//     printf("原始树的中序遍历: ");
+//     inorderTraversal(root);
+//     printf("\n");
 
-    root = deleteNode(root, 33); // 删除根节点
+//     root = deleteNode(root, 33); // 删除根节点
 
-    printf("删除根节点后的中序遍历: ");
-    inorderTraversal(root);
-    printf("\n");
+//     printf("删除根节点后的中序遍历: ");
+//     inorderTraversal(root);
+//     printf("\n");
 
-    return 0;
-}
+//     return 0;
+// }
+
+/*代码说明
+创建新节点：createNode 函数用于创建一个新的AVL树节点。
+获取高度：getHeight 函数返回节点的高度。
+更新高度：updateHeight 函数更新节点的高度。
+获取平衡因子：getBalanceFactor 函数计算节点的平衡因子。
+旋转操作：rightRotate 和 leftRotate 函数分别实现右旋和左旋操作。
+查找最小值节点：findMin 函数查找右子树中的最小值节点。
+删除节点：deleteNode 函数实现删除节点并重新平衡树的操作。
+中序遍历：inorderTraversal 函数用于中序遍历树，验证删除操作是否正确。
+通过这些步骤和函数，可以确保在删除节点后AVL树仍然保持平衡。
+*/

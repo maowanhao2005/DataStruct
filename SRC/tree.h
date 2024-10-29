@@ -12,14 +12,13 @@ class Tree{
 private:
     struct Node{
         T data;
-        Node* left;
+        Node* left;     // 左子树的任意一个节点都小于
         Node* right;
         ~Node(){
             if (left) delete left;
             if (right) delete right;
         }
-    };
-
+   };
 private:
     Node* root;
 
@@ -102,6 +101,46 @@ private:
         }
         return node;
     }
+
+    /// node就是要移除的节点
+    void removeNode(Node* root,Node* node){
+        if (root == nullptr) return;
+        
+        stack<Node*> s;
+        s.push(root);
+        while (!s.isEmpty())
+        {
+            Node* tmp = s.peek();
+
+            if(tmp->data < node->data){   // 在根节点的右子树中
+                if(tmp->right!=nullptr){
+                    s.push(tmp->right);
+                }
+                else{
+                    return;
+                }
+            }
+            else if(tmp->data > node->data){
+                if(tmp->left != nullptr){
+                    s.push(tmp->left);
+                }
+                else{
+                    return;
+                }
+            }
+            else{   // 找到这个节点了
+                // tmp 就是要删掉的节点
+                // 判断这个节点是不是根节点
+                if (tmp == root){
+                    
+                }
+            }
+            
+        }
+        
+
+    }
+
 
     bool search(Node* node, T data){
         if (node == NULL){

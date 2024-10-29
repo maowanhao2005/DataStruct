@@ -20,8 +20,8 @@ private:
 
 private:
 
-    Node<T> * head = nullptr;
-    unsigned int size = 0;  // unsigned 表示无符号类型，符号就是负号，也就是一个没有负号的数，就是一个不小于0的数,   size : 尺寸
+    Node<T> * head = nullptr;//空间为空
+    unsigned int size = 0;   // unsigned 表示无符号类型，符号就是负号，也就是一个没有负号的数，就是一个不小于0的数,   size : 尺寸
 public:
     List<T>(){}
 

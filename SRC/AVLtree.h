@@ -103,13 +103,15 @@ AVLNode* deleteNode(AVLNode* root, int key) {
         root->left = deleteNode(root->left, key);
     } else if (key > root->val) {
         root->right = deleteNode(root->right, key);
-    } else {
+    } 
+    else {
         // 没有子节点或只有一个子节点
         if (root->left == NULL) {
             AVLNode* temp = root->right;
             free(root);
             return temp;
-        } else if (root->right == NULL) {
+        } 
+        else if (root->right == NULL) {
             AVLNode* temp = root->left;
             free(root);
             return temp;

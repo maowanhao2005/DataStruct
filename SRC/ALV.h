@@ -1,8 +1,26 @@
-#include <iostream>
-#include <queue>
-
 #ifndef AVL_H
 #define AVL_H
+
+#include <iostream>
+#include <queue>
+#include <cstdint>
+
+struct GUID{
+    uint32_t session = 0;
+    uint32_t local = 0;
+
+    bool operator==(const GUID& o) const {
+        return local == o.local && session == o.session;
+    }
+    bool operator<(const GUID& o) const {
+        return session < o.session || (session == o.session && local < o.local);
+    }
+    bool operator>(const GUID& o) const {
+        return session > o.session || (session == o.session && local > o.local);
+    }
+};
+
+
 
 template <typename T>
 class AVLTree {
@@ -75,7 +93,7 @@ private:
         node->height = 1 + std::max(height(node->left), height(node->right));
 
         // 计算平衡因子
-        int balance = getBalance(node);
+        int balance = getBalance(node); // 
 
         // 左左情况
         if (balance > 1 && data < node->left->data)
@@ -197,7 +215,7 @@ public:
 int debugAVL() {
     AVLTree<int> tree;
 
-    int nodes[] = {1, 15, 2, 14, 3, 13, 4, 12, 5, 11, 6, 10, 7, 9, 8};
+    int nodes[] = {1,15,2};
     for (int value : nodes) {
         tree.insert(value);
     }

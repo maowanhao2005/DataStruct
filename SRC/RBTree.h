@@ -20,11 +20,17 @@ private:
     void leftRotate(std::shared_ptr<Node> x) {
         auto y = x->right;
         x->right = y->left;
-        if (y->left != nullptr) y->left->parent = x;
+        if (y->left != nullptr) 
+            y->left->parent = x;
+        
         y->parent = x->parent;
-        if (x->parent == nullptr) root = y;
-        else if (x == x->parent->left) x->parent->left = y;
-        else x->parent->right = y;
+
+        if (x->parent == nullptr) 
+            root = y;
+        else if (x == x->parent->left) 
+            x->parent->left = y;
+        else 
+            x->parent->right = y;
         y->left = x;
         x->parent = y;
     }
@@ -32,11 +38,15 @@ private:
     void rightRotate(std::shared_ptr<Node> x) {
         auto y = x->left;
         x->left = y->right;
-        if (y->right != nullptr) y->right->parent = x;
+        if (y->right != nullptr) 
+            y->right->parent = x;
         y->parent = x->parent;
-        if (x->parent == nullptr) root = y;
-        else if (x == x->parent->right) x->parent->right = y;
-        else x->parent->left = y;
+        if (x->parent == nullptr) 
+            root = y;
+        else if (x == x->parent->right) 
+            x->parent->right = y;
+        else
+            x->parent->left = y;
         y->right = x;
         x->parent = y;
     }
@@ -76,19 +86,24 @@ private:
                     leftRotate(z->parent->parent);
                 }
             }
-        }
+        } 
         root->color = Color::BLACK;
     }
 
     void transplant(std::shared_ptr<Node> u, std::shared_ptr<Node> v) {
-        if (u->parent == nullptr) root = v;
-        else if (u == u->parent->left) u->parent->left = v;
-        else u->parent->right = v;
-        if (v != nullptr) v->parent = u->parent;
+        if (u->parent == nullptr) 
+            root = v;
+        else if (u == u->parent->left) 
+            u->parent->left = v;
+        else 
+            u->parent->right = v;
+        if (v != nullptr) 
+            v->parent = u->parent;
     }
 
     std::shared_ptr<Node> minimum(std::shared_ptr<Node> x) {
-        while (x->left != nullptr) x = x->left;
+        while (x->left != nullptr) 
+            x = x->left;
         return x;
     }
 
@@ -108,14 +123,16 @@ private:
                     x = x->parent;
                 } else {
                     if (w->right == nullptr || w->right->color == Color::BLACK) {
-                        if (w->left != nullptr) w->left->color = Color::BLACK;
+                        if (w->left != nullptr) 
+                            w->left->color = Color::BLACK;
                         w->color = Color::RED;
                         rightRotate(w);
                         w = x->parent->right;
                     }
                     w->color = x->parent->color;
                     x->parent->color = Color::BLACK;
-                    if (w->right != nullptr) w->right->color = Color::BLACK;
+                    if (w->right != nullptr) 
+                        w->right->color = Color::BLACK;
                     leftRotate(x->parent);
                     x = root;
                 }
@@ -133,18 +150,20 @@ private:
                     x = x->parent;
                 } else {
                     if (w->left == nullptr || w->left->color == Color::BLACK) {
-                        if (w->right != nullptr) w->right->color = Color::BLACK;
+                        if (w->right != nullptr)
+                            w->right->color = Color::BLACK;
                         w->color = Color::RED;
                         leftRotate(w);
                         w = x->parent->left;
                     }
                     w->color = x->parent->color;
                     x->parent->color = Color::BLACK;
-                    if (w->left != nullptr) w->left->color = Color::BLACK;
+                    if (w->left != nullptr)
+                        w->left->color = Color::BLACK;
                     rightRotate(x->parent);
                     x = root;
                 }
-            }
+            } 
         }
         x->color = Color::BLACK;
     }
@@ -187,22 +206,30 @@ public:
         auto x = root;
         while (x != nullptr) {
             y = x;
-            if (z->key < x->key) x = x->left;
-            else x = x->right;
+            if (z->key < x->key) 
+                x = x->left;
+            else 
+                x = x->right;
         }
         z->parent = y;
-        if (y == nullptr) root = z;
-        else if (z->key < y->key) y->left = z;
-        else y->right = z;
+        if (y == nullptr) 
+            root = z;
+        else if (z->key < y->key) 
+            y->left = z;
+        else 
+            y->right = z;
         insertFixup(z);
     }
 
     bool contains(T key) {
         auto x = root;
         while (x != nullptr) {
-            if (key < x->key) x = x->left;
-            else if (key > x->key) x = x->right;
-            else return true;
+            if (key < x->key) 
+                x = x->left;
+            else if (key > x->key) 
+                x = x->right;
+            else 
+                return true;
         }
         return false;
     }
@@ -210,10 +237,13 @@ public:
     void remove(T key) {
         auto z = root;
         while (z != nullptr && z->key != key) {
-            if (key < z->key) z = z->left;
-            else z = z->right;
+            if (key < z->key) 
+                z = z->left;
+            else 
+                z = z->right;
         }
-        if (z != nullptr) removeNode(z);
+        if (z != nullptr) 
+            removeNode(z);
     }
 
     void printInOrder(std::shared_ptr<Node> node) const {

@@ -10,8 +10,8 @@ int main(int argc, char const *argv[]){
     // debugQueue();
     // debugStack();
     // debugTree();
-    debugAVL();
-    // debugRBTree();
+    // debugAVL();
+    debugRBTree();
     return 0;
 }
 

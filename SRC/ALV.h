@@ -215,38 +215,37 @@ public:
 int debugAVL() {
     AVLTree<int> tree;
 
-    int nodes[] = {1,15,2};
+    int nodes[] = {1,15,2,8,4,12,1};
     for (int value : nodes) {
         tree.insert(value);
     }
-
 
     std::cout << "层序遍历插入后的 AVL 树节点：";
     tree.levelOrder();
 
     // 删除节点 8
-    // tree.deleteNode(8);
-    // std::cout << "删除 8 后的 AVL 树节点：";
+    tree.deleteNode(8);
+    std::cout << "删除 8 后的 AVL 树节点：";
     // tree.levelOrder();
 
-    // // 删除节点 4
-    // tree.deleteNode(4);
-    // std::cout << "删除 4 后的 AVL 树节点：";
+    // 删除节点 4
+    tree.deleteNode(4);
+    std::cout << "删除 4 后的 AVL 树节点：";
     // tree.levelOrder();
 
-    // // 删除节点 12
-    // tree.deleteNode(12);
-    // std::cout << "删除 12 后的 AVL 树节点：";
+    // 删除节点 12
+    tree.deleteNode(12);
+    std::cout << "删除 12 后的 AVL 树节点：";
     // tree.levelOrder();
 
-    // // 删除节点 1
-    // tree.deleteNode(1);
-    // std::cout << "删除 1 后的 AVL 树节点：";
+    // 删除节点 1
+    tree.deleteNode(1);
+    std::cout << "删除 1 后的 AVL 树节点：";
     // tree.levelOrder();
 
-    // // 尝试删除节点 16（不存在）
-    // tree.deleteNode(16);
-    // std::cout << "尝试删除 16 后的 AVL 树节点：";
+    // 尝试删除节点 16（不存在）
+    tree.deleteNode(16);
+    std::cout << "尝试删除 16 后的 AVL 树节点：";
     // tree.levelOrder();
 
     return 0;

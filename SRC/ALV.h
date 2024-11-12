@@ -215,7 +215,7 @@ public:
 int debugAVL() {
     AVLTree<int> tree;
 
-    int nodes[] = {1,15,2,8,4,12,1};
+    int nodes[] = {1,15,2,8,4,12};
     for (int value : nodes) {
         tree.insert(value);
     }

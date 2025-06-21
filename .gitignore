@@ -2,3 +2,11 @@
 /.vscode/
 /build/
 /.cache
+/.idea/.name
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/DataStruct.iml
+/.idea/editor.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/.idea/vcs.xml
